@@ -1,103 +1,54 @@
 # Bachelorarbeit_Code
 
-STDP auf die technische Umsetzung stärker beziehen.
-Variablen auf Seite 9 direkt ausführlicher erklären.
-Aufstellung was heißt jede Variable, englischen Begriffe nutzen zu Beginn!
+## Inhaltsübersicht des Repositories
 
-Gesamtbild auf Neuronen beziehen, erst dann Formeln
-Nochmal darstellen, wann feuert ein Neuron? präsynaptisches feuern beeinflusst durch presynaptisches
+Dieses Repository dient als praktische Ergänzung zur Bachelorarbeit und demonstriert die Implementierung verschiedener Konzepte und Werkzeuge im Bereich neuromorpher Architekturen und Spiking Neural Networks (SNNs).
 
+Die Codebasis ist hauptsächlich strukturiert nach den Experimenten, die in **Kapitel 4 ("Werkzeuge zur Simulation und Modellierung von Spiking Neural Networks")** der Arbeit durchgeführt wurden.
 
-synaptische Gewicht W vorher auch erwähnen => Gewichtsmatrix (?) 
+### Kerninhalte und Experimente:
 
-Berechnung P/Q unabhängig voneinander
-
-,,τLTD regelt, wie schnell dieser
-Einfluss abklingt, und ALTD bestimmt, wie stark die Verbindung bei Depression – also wenn der
-postsynaptische Spike vor dem prä-synaptischen kommt – abgeschwächt wird." --> gilt für beide Formeln
-
-wann wird welche Formel zum Einsatz?
-
-wie bestimmt man, welches Neuron zuerst feuert?
-
-ggf. auch ein Bild
-
-! auf a ändern ,, Die Verstärkungsfaktoren ALTP
-und ALTD bestimmen dabei, wie stark eine Veränderung der Verbindung ausfällt."
-
-Beispiel 1+2 passieren immer, und Beispiel 3+4 greifen nur in bestimmmten Fällen, nochmal in der Quelle nachlesen => Pseudocode verwenden
-
-Beispielwerte Seite 4 nutzen!
-
-Beispiele 1 + 3 zusammenfassen, Beispiele 2 + 4 zusammenfassen zu Depression/Potention -> Werte anpassen --> das postsynaptische muss SPÄTER feuern
-
-Beispiel 1 --> Teil a und Teil b
-
-t'pre --> vorher
-
-dann müsste der Exponent doch negativ sein
-
-δWp = aLTP·P·exp
-tpre−tpost
-τLTP
-
-Delta W? --> immer positiv
-
-"Eqs. (1)-(4) describe the STDP rule [23] used in this
-work. In this rule, the weight changes are proportional to
-spike trace [24]. tpre and tpost denote the time a pre- and
-post-synaptic, respectively, spikes arrive; tpre′ and tpost′
-represent the arrival time of previous pre- and post-synaptic
-spikes respectively. ALTP and ALTDare the amplitudes of
-trace updating for potentiation and depression respectively;
-and aLTP and aLTD are the potentiation and depression
-) + ALTP (1)
-) + ALTD (2)
-learning rate respectively. Each pre-synaptic spike arrival will
-update the pre-synaptic trace P according to Eq. (1), post-
-synaptic spike changes the post-synaptic trace Qaccording to
-Eq. (2). If a pre-synaptic spike happens after a post-synaptic
-spike, weight will decrease by δW q , which is given by (3). If
-a post-synaptic spike occurs after a pre-synaptic spike, weight
-will increase by δW p given by (4).
-P= P ×exp( tpre′−tpre
-τLT P
-Q= Q×exp( tpost′−tpost
-τLT D
-δW q= aLTD×Q×exp( tpost−tpre
-),tpost <tpre (3)
-τLT D
-δW p= aLTP ×P ×exp( tpre−tpost
-),tpre <tpost (4)" Zu Beginn
-
-ZU BEGINN
+1.  **Simulationen mit NEST (Abschnitt 4.1):**
+    *   Untersuchung des grundlegenden Verhaltens einzelner Neuronen unter verschiedenen Bedingungen.
+    *   Code zur Demonstration von Leckströmen, Schwellenwerten und der Reaktion auf externe Reize.
 
 
-,,STDP sorgt also dafür, dass sich die Verbindungen zwischen Neuronen dynamisch anpassen –
-immer basierend auf dem Timing der Spikes. Wenn die Neuronen gut synchron feuern, verstärken
-sie ihre Verbindung. Wenn sie asynchron feuern, schwächen sie diese Verbindung. So ermöglicht
-STDP, dass das Gehirn auf der Grundlage von Erfahrung und zeitlichem Zusammenspiel lernt
-und sich immer wieder anpasst"
+2.  **Funktionsweise von SNNs mit Norse und PyTorch (Abschnitt 4.2 & 4.3):**
+    *   Implementierung eines neuronalen Modells zur Klassifizierung des **Fashion-MNIST Datensatzes**.
+    *   Untersuchung verschiedener Eingabe-Encoder:
+        *   `ConstantCurrentLIFEncoder`
+        *   `PoissonEncoder`
+        *   `SpikeLatencyLIFEncoder`
+    *   Analyse der Trainingsdynamik, Genauigkeit und des Verlusts 
 
-und dann Rückbezug Hebbsches Lernen mit Zitata
+3.  **N-MNIST: Ein neuromorpher Datensatz für SNNs (Abschnitt 4.4):**
+    *   Verarbeitung und Klassifizierung des ereignisbasierten N-MNIST Datensatzes.
+    *   Implementierungen mit:
+        *   **Norse** (Abschnitt 4.4.1)
+        *   **Intel Lava** (Abschnitt 4.4.2)
+    *   Nutzung der `tonic` Bibliothek zur Handhabung des N-MNIST Datensatzes.
 
---> im Bewertungskapitel auf fehlende Möglichkeit der Implementation dazu eingehen
+
+4.  **STDP praktisch implementiert (Abschnitt 4.5):**
+    *   Demonstration der Spike-Timing-Dependent Plasticity (STDP) in einem einfachen Neuronenmodell.
+    *   Visualisierung der Gewichtsänderungen und des Lernfensters (siehe Abbildungen 4.19 bis 4.27).
+    *   Implementierung mit grundlegenden Python-Bibliotheken und ggf. spezifischen Lava-Komponenten für Loihi-Lernregeln.
 
 
-2.2
+---
 
-vor einigen Jahren --> Ersetzung Jahreszahl
+## Verwendete Technologien und Frameworks
 
-Encoder --> was bedeutet die y-Achse? Durchnummerierung der Neuronen oder Stromwert?
+*   **NEST Simulator:** Für detaillierte Simulationen biologisch inspirierter neuronaler Netzwerke.
+*   **Norse:** Eine Deep-Learning-Bibliothek für SNNs, die auf PyTorch aufbaut.
+*   **PyTorch:** Als Backend für Norse und für die Implementierung von Trainingsschleifen.
+*   **Intel Lava:** Ein Open-Source-Software-Framework für neuromorphes Computing, insbesondere für Experimente, die auf Intel Loihi Hardware abzielen.
+*   **Tonic:** Zur einfachen Handhabung und Transformation von neuromorphen Datensätzen.
+*   Standardbibliotheken: NumPy, Matplotlib, h5py, etc.
 
---> warum validation 
 
-training accuracy vs Test accuracy
 
-training vs validation
+## Bezug zur Bachelorarbeit
 
-bei Gegenüberstellungen --> gleiche Skalen
+Der Code in diesem Repository dient der Veranschaulichung und Reproduzierbarkeit der im praktischen Teil der Bachelorarbeit durchgeführten Experimente. Er ermöglicht ein tiefergehendes Verständnis der diskutierten Konzepte, Herausforderungen und Implementierungsdetails von neuromorphen Systemen und SNNs.
 
-15 Stunden -> FMnist nochmal nachschauen
-
-N-MNIST -> Ergebnisübersicht
