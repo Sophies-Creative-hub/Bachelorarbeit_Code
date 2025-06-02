@@ -8,12 +8,7 @@ Die Codebasis ist hauptsächlich strukturiert nach den Experimenten, die in **Ka
 
 ### Kerninhalte und Experimente:
 
-1.  **Simulationen mit NEST (Abschnitt 4.1):**
-    *   Untersuchung des grundlegenden Verhaltens einzelner Neuronen unter verschiedenen Bedingungen.
-    *   Code zur Demonstration von Leckströmen, Schwellenwerten und der Reaktion auf externe Reize.
-
-
-2.  **Funktionsweise von SNNs mit Norse und PyTorch (Abschnitt 4.2 & 4.3):**
+2.  **Funktionsweise von SNNs mit Norse und PyTorch:**
     *   Implementierung eines neuronalen Modells zur Klassifizierung des **Fashion-MNIST Datensatzes**.
     *   Untersuchung verschiedener Eingabe-Encoder:
         *   `ConstantCurrentLIFEncoder`
@@ -21,15 +16,15 @@ Die Codebasis ist hauptsächlich strukturiert nach den Experimenten, die in **Ka
         *   `SpikeLatencyLIFEncoder`
     *   Analyse der Trainingsdynamik, Genauigkeit und des Verlusts 
 
-3.  **N-MNIST: Ein neuromorpher Datensatz für SNNs (Abschnitt 4.4):**
+3.  **N-MNIST: Ein neuromorpher Datensatz für SNNs:**
     *   Verarbeitung und Klassifizierung des ereignisbasierten N-MNIST Datensatzes.
     *   Implementierungen mit:
-        *   **Norse** (Abschnitt 4.4.1)
-        *   **Intel Lava** (Abschnitt 4.4.2)
+        *   **Norse** 
+        *   **Intel Lava** 
     *   Nutzung der `tonic` Bibliothek zur Handhabung des N-MNIST Datensatzes.
 
 
-4.  **STDP praktisch implementiert (Abschnitt 4.5):**
+4.  **STDP praktisch implementiert:**
     *   Demonstration der Spike-Timing-Dependent Plasticity (STDP) in einem einfachen Neuronenmodell.
     *   Visualisierung der Gewichtsänderungen und des Lernfensters (siehe Abbildungen 4.19 bis 4.27).
     *   Implementierung mit grundlegenden Python-Bibliotheken und ggf. spezifischen Lava-Komponenten für Loihi-Lernregeln.
@@ -39,7 +34,6 @@ Die Codebasis ist hauptsächlich strukturiert nach den Experimenten, die in **Ka
 
 ## Verwendete Technologien und Frameworks
 
-*   **NEST Simulator:** Für detaillierte Simulationen biologisch inspirierter neuronaler Netzwerke.
 *   **Norse:** Eine Deep-Learning-Bibliothek für SNNs, die auf PyTorch aufbaut.
 *   **PyTorch:** Als Backend für Norse und für die Implementierung von Trainingsschleifen.
 *   **Intel Lava:** Ein Open-Source-Software-Framework für neuromorphes Computing, insbesondere für Experimente, die auf Intel Loihi Hardware abzielen.
